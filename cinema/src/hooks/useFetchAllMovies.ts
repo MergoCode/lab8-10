@@ -22,7 +22,7 @@ export default function useFetchAllMovies() {
         
             const response = await api.get("/movies/");
             if (response.status == 200) {
-                setMovies(response.data);
+                setMovies(response.data.data);
             }
         }
          catch (err: unknown) {
@@ -36,7 +36,7 @@ export default function useFetchAllMovies() {
     }
     fetchAllMovies();
 }, [])
-
+console.log(typeof movies);
 return {movies, fetchError};
 
 }
