@@ -1,35 +1,58 @@
 @use './App.sass'
     
 .movie-card
-    cursor: pointer
-    width: 30%
-    height: 600px
-    border: solid 1px 
-    border-radius: 20px
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    background: App.$lighteraccent
-    color: #fff
-    padding: 30px 10px
-    margin: 10px 10px
-    .card-title
-        font-size: 24px
-        margin: 10px 0
-    .img-container-card
-        display: flex
-        justify-content: center
+  position: relative
+  background-size: cover
+  background-position: center
+  border-radius: 10px
+  overflow: hidden
+  cursor: pointer
+  color: white
+  min-height: 300px
+  display: flex
+  justify-content: center
+  align-items: center
+  padding: 0 40px 
+  margin: 20px 0 
+  .card-img-container
+    width: 15%
+    img
         width: 100%
-        height: 65%
-        aspect-ratio: 1/1
-        .card-img
-            border-radius: 20px
-            width: 90%
-            height: 100%
-    .card-params
-        display: flex
-        justify-content: space-between
-            
+  .card-content-container
+    margin-left: 20px
+    width: 85%
+  .button-block
+    width: 100%
+    display: flex
+    justify-content: end
+    margin-top: 40px
+    
+  // затемнення через ::before
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6))
+    z-index: 0
+
+  .movie-content
+    display: flex
+    position: relative
+    z-index: 1
+    margin: 0
+  .card-button
+    border: none
+    background: rgb(0, 0, 0, 0.5)
+    color: #fff
+    padding: 10px 50px
+    transition: background-color 0.3s ease-in-out
+    &:hover
+      background-color:  #5454C5  
+    &:active
+        background-color: #7a7aea
 
             
     

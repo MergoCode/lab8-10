@@ -9,7 +9,8 @@ type movies = {
     genre: string,
     duration: number,
     poster_url: string, 
-    release_date: string
+    release_date: string,
+    director: string,
 }
 
 export default function useFetchAllMovies() {

@@ -1,39 +1,73 @@
-import React, {useState, useEffect, useRef} from "react";
+// LandingPage.tsx
+import React, { useState, useRef } from "react";
 import "../styles/Landing.sass";
 import useFetchAllMovies from "../hooks/useFetchAllMovies";
+
 const LandingPage: React.FC = () => {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const slideRef = useRef(null);
-    const {movies, fetchError} = useFetchAllMovies();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
+  const { movies, fetchError } = useFetchAllMovies();
 
-    const totalSlides = movies ? (movies.length > 3 ? movies.length - 2 : 1) : 0;
+  const visibleCount = 3; // Show 3 cards at a time
+  const maxSlide = movies ? Math.max(0, movies.length - visibleCount) : 0;
 
-    const nextSlide = () => {
-        setCurrentSlide((prev) => (prev === totalSlides - 1 ? 0 : prev + 1));
-      };
-    
-      const prevSlide = () => {
-        setCurrentSlide((prev) => (prev === 0 ? totalSlides - 1 : prev - 1));
-      };
+  const handlePrev = () => {
+    setCurrentSlide((prev) => Math.max(prev - 1, 0));
+  };
 
-      useEffect(() => {
-        if (slideRef.current) {
-          slideRef.current.style.transition = 'transform 0.5s ease-in-out';
-          slideRef.current.style.transform = `translateX(-${currentSlide * (100 / movies.length)}%)`;
-        }
-      }, [currentSlide, movies.length]);
+  const handleNext = () => {
+    setCurrentSlide((prev) => Math.min(prev + 1, maxSlide));
+  };
 
-    return(<div>
-        <div className="background-banner container">
-            <div className="site-title">
-                <h1 className="site-header"></h1>
+  return (
+    <div className="background-banner container">
+      <div className="site-title">
+        <h1 className="site-header"> - ABSLT CINEMA - </h1>
+      </div>
+      <div className="slider-container">
+        <h1 className="slider-header">Featured Movies</h1>
+        <div className="slider">
+          <button
+            className="slider-prev"
+            onClick={handlePrev}
+            disabled={currentSlide === 0}
+          >
+            ←
+          </button>
+          <div className="slider-wrapper">
+            <div
+              className="slider-track"
+              ref={sliderRef}
+              style={{
+                transform: `translateX(-${(currentSlide * 100) / visibleCount}%)`,
+                transition: "transform 0.5s ease",
+              }}
+            >
+              {movies?.map((movie) => (
+                <div key={movie.id} className="slider-card">
+                  <div
+                    className="card-image"
+                    style={{ backgroundImage: `url(${movie.poster_url})` }}
+                  />
+                  <div className="card-content">
+                    <h3>{movie.title || "Movie Title"}</h3>
+                  </div>
+                </div>
+              ))}
             </div>
-            <div className="slider-container">
-                <h1 className="slider-header"></h1>
-                <div className="slider"></div>
-            </div>
+          </div>
+          <button
+            className="slider-next"
+            onClick={handleNext}
+            disabled={currentSlide >= maxSlide}
+          >
+            →
+          </button>
         </div>
-    </div>)
-}
+        {fetchError && <div className="error">Error loading movies</div>}
+      </div>
+    </div>
+  );
+};
 
 export default LandingPage;

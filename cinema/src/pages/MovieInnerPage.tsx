@@ -10,10 +10,10 @@ type PageProps = {
   release_date: string;
 };
 
-const MovieInner: React.FC<PageProps> = ({}) => {
+const MovieInner: React.FC<PageProps> = () => {
 
 return(<div>
-    
+
 </div>);
 
 }

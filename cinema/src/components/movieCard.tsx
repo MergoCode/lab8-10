@@ -9,6 +9,7 @@ type CardProps = {
   duration: number;
   poster_url: string;
   release_date: string;
+  director: string;
 };
 
 const MovieCard: React.FC<CardProps> = ({
@@ -19,23 +20,29 @@ const MovieCard: React.FC<CardProps> = ({
   duration,
   poster_url,
   release_date,
+  director,
 }) => {
     const navigate = useNavigate();
 
 
-  return <div onClick={() => {navigate(`/movies/${id}`)}} className="col-4 movie-card">
-    <div className="img-container-card">
-    <img className="card-img" src={poster_url} alt="" />
+  return <div
+  className="col-10 movie-card"
+  style={{ backgroundImage: `url(${poster_url})` }}
+>
+  <div className="movie-content">
+    <div className="card-img-container">
+      <img src={poster_url} alt="" />
     </div>
-    <h2 className="card-title">{title}</h2>
-    
-    <p className="card-genre">Жанр: {genre}</p>
-    <p className="card-description">{description}</p>
-    <div className="card-params">
-    <p className="card-p">{duration}</p>
-    <p className="card-p">{release_date}</p>
+    <div className="card-content-container">
+    <h2>{title}</h2>
+    <p>{genre} • {duration} хв • {new Date(release_date).getFullYear()} • {director}</p>
+    <p>{description}</p>
+    <div className="button-block">
+    <button onClick={() => {navigate(`/movies/${id}`)}} className="card-button">Перейти</button>
     </div>
-  </div>;
+    </div>
+  </div>
+</div>;
 };
 
 export default MovieCard;
