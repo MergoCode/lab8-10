@@ -38,7 +38,7 @@ const MovieCard: React.FC<CardProps> = ({
     <p>{genre} • {duration} хв • {new Date(release_date).getFullYear()} • {director}</p>
     <p>{description}</p>
     <div className="button-block">
-    <button onClick={() => {navigate(`/movies/${id}`)}} className="card-button">Перейти</button>
+    <button onClick={() => {navigate(`/movies/${id + 1}`)}} className="card-button">Перейти</button>
     </div>
     </div>
   </div>

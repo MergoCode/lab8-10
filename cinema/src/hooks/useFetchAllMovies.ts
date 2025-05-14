@@ -37,7 +37,6 @@ export default function useFetchAllMovies() {
     }
     fetchAllMovies();
 }, [])
-console.log(typeof movies);
 return {movies, fetchError};
 
 }

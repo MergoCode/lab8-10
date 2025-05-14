@@ -1,4 +1,3 @@
-// LandingPage.tsx
 import React, { useState, useRef } from "react";
 import "../styles/Landing.sass";
 import useFetchAllMovies from "../hooks/useFetchAllMovies";
@@ -8,7 +7,7 @@ const LandingPage: React.FC = () => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const { movies, fetchError } = useFetchAllMovies();
 
-  const visibleCount = 3; // Show 3 cards at a time
+  const visibleCount = 3; 
   const maxSlide = movies ? Math.max(0, movies.length - visibleCount) : 0;
 
   const handlePrev = () => {
