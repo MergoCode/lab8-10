@@ -34,6 +34,14 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </p>
           <p
             onClick={() => {
+              navigate("/login");
+            }}
+            className="header-link"
+          >
+          Логін
+          </p>
+          <p
+            onClick={() => {
               navigate("/account");
             }}
             className="header-link"

@@ -1,0 +1,116 @@
+$primary-color: #393053 
+$secondary-color: #18122B 
+$accent-color: #443C68 
+$text-color: #FFFFFF 
+$error-color: #FF5252 
+$button-color: #fff 
+
+.login-container
+  max-width: 450px
+  width: 90%
+  margin: 3rem auto
+  padding: 2rem
+  background-color: rgba($primary-color, 0.95)
+  border-radius: 12px
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3)
+  color: $text-color
+  
+.login-header
+  font-size: 2rem
+  margin-bottom: 1.5rem
+  text-align: center
+  font-weight: 600
+  color: $text-color
+
+.login-form
+  display: flex
+  flex-direction: column
+  gap: 1.2rem
+
+.login-form-group
+  display: flex
+  flex-direction: column
+  gap: 0.5rem
+
+.login-label
+  font-size: 1rem
+  font-weight: 500
+  color: $text-color
+  opacity: 0.9
+
+.login-input
+  padding: 0.75rem 1rem
+  border: 1px solid rgba($text-color, 0.2)
+  border-radius: 8px
+  background-color: rgba($secondary-color, 0.5)
+  color: $text-color
+  font-size: 1rem
+  transition: all 0.2s ease
+  
+  &:focus
+    outline: none
+    border-color: $accent-color
+    box-shadow: 0 0 0 2px rgba($accent-color, 0.3)
+
+.login-error
+  color: $error-color
+  font-size: 0.85rem
+  margin-top: 0.25rem
+
+.login-button-container
+  margin-top: 1rem
+
+.login-button
+  width: 100%
+  padding: 0.875rem
+  border: none
+  border-radius: 8px
+  font-size: 1rem
+  font-weight: 600
+  cursor: pointer
+  transition: all 0.2s ease
+  
+  &:disabled
+    opacity: 0.7
+    cursor: not-allowed
+
+.login-button-primary
+  background-color: $accent-color
+  color: $text-color
+  
+  &:hover:not(:disabled)
+    background-color: darken($accent-color, 10%)
+
+.login-button-register
+  background-color: $button-color
+  color: $text-color
+  
+  &:hover:not(:disabled)
+    background-color: darken($button-color, 10%)
+
+.no-account
+  margin-top: 1.5rem
+  text-align: center
+  font-size: 0.95rem
+  
+  p
+    margin: 0.25rem 0
+
+.no-account-link
+  color: $button-color
+  font-weight: 500
+  cursor: pointer
+  
+  &:hover
+    text-decoration: underline
+
+@media (max-width: 480px)
+  .login-container
+    padding: 1.5rem
+    margin: 2rem auto
+    
+  .login-header
+    font-size: 1.75rem
+    
+  .login-button
+    padding: 0.75rem

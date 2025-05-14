@@ -8,7 +8,7 @@ const LandingPage: React.FC = () => {
   const { movies, fetchError } = useFetchAllMovies();
 
   const visibleCount = 3; 
-  const maxSlide = movies ? Math.max(0, movies.length - visibleCount) : 0;
+  const maxSlide = movies ? Math.max(0, movies.length - visibleCount - 1) : 0;
 
   const handlePrev = () => {
     setCurrentSlide((prev) => Math.max(prev - 1, 0));
@@ -24,7 +24,7 @@ const LandingPage: React.FC = () => {
         <h1 className="site-header"> - ABSLT CINEMA - </h1>
       </div>
       <div className="slider-container">
-        <h1 className="slider-header">Featured Movies</h1>
+        <h1 className="slider-header">Новинки сезону</h1>
         <div className="slider">
           <button
             className="slider-prev"
@@ -38,16 +38,24 @@ const LandingPage: React.FC = () => {
               className="slider-track"
               ref={sliderRef}
               style={{
-                transform: `translateX(-${(currentSlide * 100) / visibleCount}%)`,
+                transform: `translateX(-${currentSlide * 75}%)`,
                 transition: "transform 0.5s ease",
               }}
             >
               {movies?.map((movie) => (
-                <div key={movie.id} className="slider-card">
-                  <div
-                    className="card-image"
-                    style={{ backgroundImage: `url(${movie.poster_url})` }}
-                  />
+                <div 
+                  key={movie.id} 
+                  className="slider-card"
+                  style={{ 
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${movie.poster_url})` 
+                  }}
+                >
+                  <div className="card-image-container">
+                    <div
+                      className="card-image"
+                      style={{ backgroundImage: `url(${movie.poster_url})` }}
+                    />
+                  </div>
                   <div className="card-content">
                     <h3>{movie.title || "Movie Title"}</h3>
                   </div>

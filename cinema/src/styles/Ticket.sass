@@ -1,2 +1,40 @@
+.tickets-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    
 .ticket
+    background-color: #fff
+    border: solid 2px red
+    border-radius: 30px
+    padding: 20px
+    width: 90%
+    height: auto
+    margin: 10px
+    display: flex
+    justify-content: space-between
+    color: #342056
+    &:hover
+        cursor: pointer
+    .data
+        display: flex
+        width: 100%
+        .half
+            margin: 0 10px
+    
+.stripe
+    border-left: 5px red dotted
+    height: 123%
+    margin: 0 200px
+    width: 56%
+    border-top-right-radius: 30px
+    border-bottom-right-radius: 30px
+    background-color: pink
+    transform: translateY(-9.5%)
+    transition: background-color 0.3s ease-in-out
+    &:hover
+        background-color: #FFC1DA
+
+.tickets-header
     color: #fff
+    margin: 20px 0
