@@ -52,7 +52,12 @@ const LoginComponent: React.FC = () => {
       for (const key in response.data.data) {
         console.log(key);
         console.log(response.data.data[key]);
+        if (key != "token") {
         Cookies.set(`${key}`, `${response.data.data[key]}`);
+        }
+        else {
+          Cookies.set("token", `${response.data.data[key]}`, {expires: 1})
+        }
       }
       navigate("/");
       reset();

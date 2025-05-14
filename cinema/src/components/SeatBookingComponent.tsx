@@ -360,11 +360,11 @@ const SeatsBookingComponent: React.FC<SeatsBookingComponentProps> = ({
   
   return (
     <div className="booking-section">
-      <h2>Select Seats for {formatDate(selectedSession!.start_time)} at {formatTime(selectedSession!.start_time)}</h2>
+      <h2>Оберіть місця на {formatDate(selectedSession!.start_time)} о {formatTime(selectedSession!.start_time)}</h2>
       
       <div className="screen-container">
         <div className="screen">
-          <div className="screen-label">Screen</div>
+          <div className="screen-label">Екран</div>
         </div>
       </div>
       
@@ -390,35 +390,32 @@ const SeatsBookingComponent: React.FC<SeatsBookingComponentProps> = ({
       <div className="booking-legend">
         <div className="legend-item">
           <div className="seat-example available"></div>
-          <span>Available</span>
+          <span>Доступні</span>
         </div>
         <div className="legend-item">
           <div className="seat-example selected"></div>
-          <span>Selected</span>
+          <span>Вибрані</span>
         </div>
         <div className="legend-item">
           <div className="seat-example booked"></div>
-          <span>Booked</span>
+          <span>Зайняті</span>
         </div>
-        <div className="legend-item">
-          <div className="seat-example your-booking"></div>
-          <span>Your Booking</span>
-        </div>
+        
       </div>
       
       <div className="booking-summary">
         <div className="selected-seats-info">
-          <span className="seats-count">Selected seats: {selectedSeats.length}</span>
+          <span className="seats-count">Вибрані місця: {selectedSeats.length}</span>
           {selectedSeats.length > 0 && (
             <span className="total-price">
-              Total: ${(selectedSeats.length * selectedSession!.price).toFixed(2)}
+              Загальна вартість: ${(selectedSeats.length * selectedSession!.price).toFixed(2)}
             </span>
           )}
         </div>
         
         {!isAuthenticated && selectedSeats.length > 0 && (
           <div className="auth-notice">
-            Please log in to complete your booking
+            Увійдіть щоб забронювати
           </div>
         )}
         
@@ -427,7 +424,7 @@ const SeatsBookingComponent: React.FC<SeatsBookingComponentProps> = ({
           disabled={selectedSeats.length === 0}
           onClick={handleBooking}
         >
-          Book Seats
+          Придбати
         </button>
       </div>
       

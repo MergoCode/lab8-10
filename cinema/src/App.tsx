@@ -6,6 +6,7 @@ import Layout from './components/Layout'
 import { LoginComponent, RegisterComponent } from './pages/Login-RegisterPage'
 import MovieInner from './pages/MovieInnerPage';
 import TicketsPage from './pages/Tickets'
+import AccountPage from './pages/Account'
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route path='/login' element={<LoginComponent/>}></Route>
       <Route path='/register' element={<RegisterComponent/>}></Route>
       <Route path='/tickets' element={<TicketsPage/>}></Route>
+      <Route path='/account' element={<AccountPage/>}></Route>
       </Routes>
       </Layout>
     </Router>

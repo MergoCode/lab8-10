@@ -1,0 +1,80 @@
+$background: #635985
+$darkaccent: #18122B
+$lighteraccent: #443C68
+$midaccent: #393053
+$whitecolor: #fff
+
+.account-container
+  background-color: $background
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 2rem
+  font-family: 'Roboto', sans-serif
+  color: $whitecolor
+
+.account-header
+  color: $whitecolor
+  font-size: 2.5rem
+  margin-bottom: 2rem
+  font-weight: 700
+  text-align: center
+  border-bottom: 3px solid $lighteraccent
+  padding-bottom: 0.5rem
+  width: 100%
+  max-width: 600px
+
+.user-data
+  justify-content: center
+  display: flex
+  flex-direction: column
+  background-color: $midaccent
+  border-radius: 10px
+  padding: 2rem
+  width: 100%
+  max-width: 500px
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3)
+  border: 2px solid $darkaccent
+  .user-tickets
+    margin: 10px 0
+    background-color: $lighteraccent
+    color: #fff
+    border: 2px solid $darkaccent
+    border-radius: 20px
+    padding: 10px 20px
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out
+    &:hover
+        background-color: $background
+        color: $darkaccent
+  h2, h3
+    margin-bottom: 1rem
+    padding: 0.8rem
+    border-radius: 6px
+    background-color: $lighteraccent
+
+  .user-name
+    font-size: 1.4rem
+    font-weight: 600
+    border-left: 5px solid $whitecolor
+
+  .user-phone, .user-email
+    font-size: 1.2rem
+    border-left: 3px solid $whitecolor
+    padding-left: 1rem
+
+  h3:last-child
+    margin-bottom: 0
+
+@media (max-width: 768px)
+  .account-header
+    font-size: 2rem
+    
+  .user-data
+    padding: 1.5rem
+    
+    .user-name
+      font-size: 1.2rem
+      
+    .user-phone, .user-email
+      font-size: 1rem

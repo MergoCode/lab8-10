@@ -1,17 +1,25 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/Layout.sass";
+import Cookies from "js-cookie";
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const navigate = useNavigate();
-
+  const token = Cookies.get("token");
+  const handleAccountClick = () => {
+    if (!token) {
+      navigate('/login');
+    } else {
+      navigate('/account')
+    }
+  }
   return (
     <>
       <header className="header">
-        <div className="header-half">
+        <div className="header-half logo-block">
           <img src="logo.svg" alt="" onClick={() => {navigate("/")}}/>
           <div className="filler-4"></div>
         </div>
@@ -41,9 +49,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           Логін
           </p>
           <p
-            onClick={() => {
-              navigate("/account");
-            }}
+            onClick={handleAccountClick}
             className="header-link"
           >
             Акаунт

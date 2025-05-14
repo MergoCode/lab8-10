@@ -8,6 +8,7 @@ const MoviePage: React.FC = () => {
 
   return (
     <div className="container movie-page">
+      <h1 className="movies-header">В прокаті</h1>
       {movies?.map((el, key) => (
         <MovieCard
           id={key}

@@ -144,25 +144,29 @@ const MovieInnerPage: React.FC = () => {
     <div className="movie-inner-page">
       {movie && (
         <div className="movie-details">
-          <h1 className="movie-title">{movie.title}</h1>
-          <div className="movie-metadata">
-            <span className="duration">{movie.duration} min</span>
-            <span className="genre">{movie.genre}</span>
-          </div>
           {movie.poster_url && (
             <div className="movie-poster">
               <img src={movie.poster_url} alt={movie.title} />
             </div>
           )}
+          <div className="movie-text-data">
+
+          <h1 className="movie-title">{movie.title}</h1>
+          <div className="movie-metadata">
+            <span className="duration">{movie.duration} хвилин</span>
+            <span className="genre">Жанр: {movie.genre}</span>
+          </div>
+          
           <p className="movie-description">{movie.description}</p>
+          </div>
         </div>
       )}
       
       <div className="sessions-container">
-        <h2>Available Sessions</h2>
+        <h2>Сеанси</h2>
         
         {sessions.length === 0 ? (
-          <p className="no-sessions">No sessions available for this movie</p>
+          <p className="no-sessions">Немає доступних сеансів</p>
         ) : (
           <div className="sessions-list">
             {sessions.map(session => (

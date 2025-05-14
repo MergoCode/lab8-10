@@ -1,15 +1,15 @@
 import React, { useState, useRef } from "react";
 import "../styles/Landing.sass";
 import useFetchAllMovies from "../hooks/useFetchAllMovies";
-
+import { useNavigate } from "react-router-dom";
 const LandingPage: React.FC = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
   const { movies, fetchError } = useFetchAllMovies();
 
   const visibleCount = 3; 
-  const maxSlide = movies ? Math.max(0, movies.length - visibleCount - 1) : 0;
-
+  const maxSlide = movies ? Math.max(0, movies.length - visibleCount) : 0;
+  const navigate = useNavigate();
   const handlePrev = () => {
     setCurrentSlide((prev) => Math.max(prev - 1, 0));
   };
@@ -56,7 +56,7 @@ const LandingPage: React.FC = () => {
                       style={{ backgroundImage: `url(${movie.poster_url})` }}
                     />
                   </div>
-                  <div className="card-content">
+                  <div className="card-content" onClick={() => {navigate(`/movies/${movie.id}`)}}>
                     <h3>{movie.title || "Movie Title"}</h3>
                   </div>
                 </div>
